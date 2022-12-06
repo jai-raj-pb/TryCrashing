@@ -1,6 +1,8 @@
 # TryCrashing
-Tried reproducing a crash similar to this: https://console.firebase.google.com/u/0/project/mindtickle-ce5f8/crashlytics/app/ios:com.mindtickle/issues/8319f5f75a050f2556c8020bdec4da7b?time=last-seven-days&amp;sessionEventKey=b2b70ee6b9c946acb93a7ca08eb167d6_1752421012560259168
+Tried reproducing a crash similar to this: https://console.firebase.google.com/u/0/project/mindtickle-ce5f8/crashlytics/app/ios:com.mindtickle/issues/45e27e868b1d3e842d2534c86d4f88d5?time=last-seven-days&sessionEventKey=dfce5efd5fd043b7bd0c977954adfe40_1752469140874212067
 
 Check ViewController.swift and Atomic.swift
 
 concurrent reads with mutation without barrier was causing the crash.
+
+Running the project as it is will crash the app at some concurrent <code>Set.contains(_:)</code> operation, <code>.barrier</code> flag while mutating fixes the problem.
